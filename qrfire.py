@@ -34,6 +34,7 @@ class QRG:
         self.imagename = imagename
         self.savepath = savepath
         self.extension = extension
+        self.info_shower()
         self.create_qrcode_image()
 
     def create_qrcode_image(self):
@@ -45,6 +46,11 @@ class QRG:
         except KeyError:
             sprint(f"{Fore.RED}This extension is not availble{Fore.RESET}")
             exit(1)
+
+    def info_shower(self):
+        sprint(f"{Style.BRIGHT}Image name: {Fore.CYAN}{self.imagename}{Fore.RESET}{Style.RESET_ALL}")
+        sprint(f"{Style.BRIGHT}Image path: {Fore.CYAN}{self.savepath}{Fore.RESET}{Style.RESET_ALL}")
+        sprint(f"{Style.BRIGHT}Image extension: {Fore.CYAN}{self.extension}{Fore.RESET}{Style.RESET_ALL}\n")
 
 
 if __name__ == '__main__':
@@ -68,7 +74,7 @@ if __name__ == '__main__':
 
     match cases_list:
         case [str(), NoneType(), str(), str()]:
-            QRG(contant=contant, imagename=contant+'_contant', savepath=path, extension=extension)
+            QRG(contant=contant, imagename=contant+'_qrcode', savepath=path, extension=extension)
             sprint(f'{Fore.GREEN}Done! in {Fore.LIGHTMAGENTA_EX}{path}{Fore.RESET}')
 
         case [str(), str(), NoneType(), str()]:
@@ -84,15 +90,15 @@ if __name__ == '__main__':
             sprint(f'{Fore.GREEN}Done! in {Fore.LIGHTMAGENTA_EX}{curront_path}{Fore.RESET}')
 
         case [str(), NoneType(), NoneType(), str()]:
-            QRG(contant=contant, imagename=contant+'_contant', savepath=curront_path, extension=extension)
+            QRG(contant=contant, imagename=contant+'_qrcode', savepath=curront_path, extension=extension)
             sprint(f'{Fore.GREEN}Done! in {Fore.LIGHTMAGENTA_EX}{curront_path}{Fore.RESET}')
 
         case [str(), NoneType(), str(), NoneType()]:
-            QRG(contant=contant, imagename=contant+'_contant', savepath=path, extension=default_ext)
+            QRG(contant=contant, imagename=contant+'_qrcode', savepath=path, extension=default_ext)
             sprint(f'{Fore.GREEN}Done! in {Fore.LIGHTMAGENTA_EX}{path}{Fore.RESET}')
 
         case [str(), NoneType(), NoneType(), NoneType()]:
-            QRG(contant=contant, imagename=contant+'_contant', savepath=curront_path, extension=default_ext)
+            QRG(contant=contant, imagename=contant+'_qrcode', savepath=curront_path, extension=default_ext)
             sprint(f'{Fore.GREEN}Done! in {Fore.LIGHTMAGENTA_EX}{curront_path}{Fore.RESET}')
         
         case _:
